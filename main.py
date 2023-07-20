@@ -206,8 +206,8 @@ def update_window_font_size(window, element_list, font_size):
         element_list (list): List of elements to update.
         font_size (int): The new font size.
     """
-    for el in element_list:
-        window[el].update(font=("Helvetica", font_size))
+    for element in element_list:
+        window[element].update(font=("Helvetica", font_size))
     window.finalize()
 
 
@@ -432,8 +432,22 @@ def main():
             while True:
                 event2, values2 = window2.read()
 
+                # Change theme
+                if event2 == selected_language['menu_text'][0][1][0]:
+                    ev, vals = sg.Window(selected_language['change_theme_popup_title'], [[sg.Combo(sg.theme_list(), k="-THEME LIST-"),
+                                                                                        sg.OK(selected_language['ok_text']),
+                                                                                        sg.Cancel(selected_language['cancel_text'])]
+                                                                                        ]).read(close=True)
+                    if ev == selected_language['ok_text']:
+                        window2.close()
+                        window.close()
+                        sg.user_settings_set_entry("theme", vals["-THEME LIST-"])
+                        window = make_window1(selected_language)
+                        window.Hide()
+                        window2 = make_window2(output_file, window["-BROWSE-"].FileTypes, font_size, selected_language)
+
                 # We listen for the second window events.
-                if event2 == "Change Font Size":
+                if event2 == selected_language['menu_text'][0][1][1]:
                     font_size = change_font_size_popup(window2, win2_change_font_elements, font_size, font_popup_size, selected_language)
                     update_window_font_size(window, win1_change_font_elements, font_size)
 
