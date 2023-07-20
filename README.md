@@ -45,16 +45,18 @@ There are same audio and video files in `audio/input/` and `videos/input/` folde
 
 ## Program requirements
 
-1. The program allows to convert audio files.
-2. The program allows to convert video files.
-3. Program supports the most popular file formats.
-4. User has the ability to freely choose where the files are saved.
-5. User has the option to change the font size of the program.
-6. User has the option to change the language of the program.
-7. User has the option to change the color theme of the program.
-8. Program has at least 2 windows; the User can seamlessly navigate back and forth.
-9. Consistency has to be held in terms of selected font size, language and theme.
+- The program allows to convert audio files.
+- The program allows to convert video files.
+- Program supports the most popular file formats.
+- User has the ability to freely choose where the files are saved.
+- User has the option to change the font size of the program.
+- User has the option to change the language of the program.
+- User has the option to change the color theme of the program.
+- Program has at least 2 windows; the User can seamlessly navigate back and forth.
+- Consistency has to be held in terms of selected font size, language and theme.
 
 ## Justification
 
-I wanted to make this program, because usually when I needed a file conversion tool for various projects for school or for my hobbies, the tools online were obnoxious, because they limited file you wanted to convert duration, and the actual file conversion sat behind a paywall. More complicated solution was going into video editing software and then exporting as another file, but that usually wasn't good enough, because some popular file formats weren't supported and even if they were, sometimes you could be asked to pay for additional codec/encoder, so yet again it was frustrating. Here I try to solve this problem by coding my own convertion tool, which is able to convert popular file formats.
+I wanted to make this program, because usually when I needed a file conversion tool for various projects for school or for my hobbies, the tools online were obnoxious, because they limited file you wanted to convert duration, and the actual file conversion sat behind a paywall. 
+More complicated solution was going into video editing software and then exporting as another file, but that usually wasn't good enough, because some popular file formats weren't supported and even if they were, sometimes you could be asked to pay for additional codec/encoder, so yet again it was frustrating. 
+Here I try to solve this problem by coding my own convertion tool, which is able to convert popular file formats.
