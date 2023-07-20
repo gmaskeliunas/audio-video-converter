@@ -57,6 +57,8 @@ There are same audio and video files in `audio/input/` and `videos/input/` folde
 
 ## Justification
 
-I wanted to make this program, because usually when I needed a file conversion tool for various projects for school or for my hobbies, the tools online were obnoxious, because they limited file you wanted to convert duration, and the actual file conversion sat behind a paywall. 
-More complicated solution was going into video editing software and then exporting as another file, but that usually wasn't good enough, because some popular file formats weren't supported and even if they were, sometimes you could be asked to pay for additional codec/encoder, so yet again it was frustrating. 
+I wanted to make this program, because usually when I needed a file conversion tool for various projects for school or for my hobbies, the tools online were obnoxious, because they limited file you wanted to convert duration, and the actual file conversion sat behind a paywall.
+
+More complicated solution was going into video editing software and then exporting as another file, but that usually wasn't good enough, because some popular file formats weren't supported and even if they were, sometimes you could be asked to pay for additional codec/encoder, so yet again it was frustrating.
+
 Here I try to solve this problem by coding my own convertion tool, which is able to convert popular file formats.
