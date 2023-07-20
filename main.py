@@ -207,7 +207,6 @@ def update_window_font_size(window, element_list, font_size):
         font_size (int): The new font size.
     """
     for el in element_list:
-        print(el)
         window[el].update(font=("Helvetica", font_size))
     window.finalize()
 
