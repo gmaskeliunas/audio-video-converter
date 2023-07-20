@@ -10,6 +10,7 @@ import PySimpleGUI as sg
 
 AudioSegment.converter = which("ffmpeg")
 
+
 # Define the global variables
 LT_FLAG_PATH = "Icons\\lt.png"
 EN_FLAG_PATH = "Icons\\usa.png"
@@ -90,7 +91,7 @@ def make_window1(language):
     Returns:
         sg.Window: The window for selecting the type of file.
     """
-    sg.theme(sg.user_settings_get_entry("theme", None))
+    sg.theme(sg.user_settings_get_entry("theme", "SystemDefault1"))
     big_text_font = ("Helvetica", 20)
 
     #Create a column layout
@@ -141,7 +142,7 @@ def make_window2(output_file, tpl, font_size, language):
     ]
     column = sg.Column(col_layout, justification='left')
     layout = [[column]]
-    return sg.Window(language['window_title'], layout, size=(500, 300), finalize=True, resizable=True, icon=ICON_PATH)
+    return sg.Window(language['window_title'], layout, size=(600, 250), finalize=True, resizable=True, icon=ICON_PATH)
 
 
 def custom_popup_ok(message, title, size, icon, language):
@@ -362,6 +363,7 @@ def main():
     This is the main function of the app. It creates the window and runs it.
     """
     # Here we define initial values for audio and video formats, as well as other defaults
+
     audio_file_types = (("Audio Files", "*.mp3;*.wav;*.ogg;*.flac;*.aac;*.m4a;*.aiff"),)
     video_file_types = (("Video Files", "*.mp4;*.mkv;*.avi;*.mov;*.webm"),)
     output_file = ""
@@ -421,9 +423,10 @@ def main():
 
         if event == selected_language['menu_text'][0][1][2]:
             selected_language = ENGLISH if language_selection_popup(selected_language) == 'English' else LITHUANIAN
+            window.close()
             window = make_window1(selected_language)
 
-
+        temp_file_types = window["-BROWSE-"].FileTypes
         if event == "-NEXT-":
             # If Next button is clicked we hide the fisrt window and output the second window.
             window.Hide()
@@ -444,7 +447,7 @@ def main():
                         sg.user_settings_set_entry("theme", vals["-THEME LIST-"])
                         window = make_window1(selected_language)
                         window.Hide()
-                        window2 = make_window2(output_file, window["-BROWSE-"].FileTypes, font_size, selected_language)
+                        window2 = make_window2(output_file, temp_file_types, font_size, selected_language)
 
                 # We listen for the second window events.
                 if event2 == selected_language['menu_text'][0][1][1]:
@@ -454,13 +457,14 @@ def main():
                 if event2 == sg.WINDOW_CLOSED or event2 == selected_language['exit_text']:
                     sys.exit()
 
+                # Listen for language change event
                 if event2 == selected_language['menu_text'][0][1][2]:
                     selected_language = ENGLISH if language_selection_popup(selected_language) == 'English' else LITHUANIAN
                     window.close()
                     window2.close()
                     window = make_window1(selected_language)
                     window.Hide()
-                    window2 = make_window2(output_file, window["-BROWSE-"].FileTypes, font_size, selected_language)
+                    window2 = make_window2(output_file, temp_file_types, font_size, selected_language)
 
                 if event2 == "-BACK-":
                     window2.close()  # Close the second window
